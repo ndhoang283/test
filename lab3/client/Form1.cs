@@ -8,12 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Sockets;
-
-namespace lab3
+namespace client
 {
-    public partial class client : Form
+    public partial class Form1 : Form
     {
-        public client()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -21,13 +20,8 @@ namespace lab3
         private void button1_Click(object sender, EventArgs e)
         {
             UdpClient udpClient = new UdpClient();
-            Byte[] sendBytes = Encoding.ASCII.GetBytes("Hello World?");
-            udpClient.Send(sendBytes, sendBytes.Length, tbHost.Text, 8080);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
+            Byte[] sendBytes = Encoding.ASCII.GetBytes(richTextBox1.Text);
+            udpClient.Send(sendBytes,sendBytes.Length,textBox1.Text,Int32.Parse(textBox2.Text));
         }
     }
 }
